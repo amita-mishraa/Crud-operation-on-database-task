@@ -1,6 +1,6 @@
 class SubjectController < ApplicationController
 
-    def list
+       def index
         @subject =Subject.all()
         render json: @subject
        end

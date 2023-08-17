@@ -1,6 +1,6 @@
 class FacultyController < ApplicationController
 
-    def list
+    def index
         @faculty =Faculty.all()
         render json: @faculty
     end

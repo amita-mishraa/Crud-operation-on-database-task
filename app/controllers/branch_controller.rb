@@ -1,33 +1,33 @@
 class BranchController < ApplicationController
 
-    def list
+      def index
         @branch =Branch.all()
         render json: @branch
-       end
+      end
    
-       def show
+      def show
          @branch = Branch.find(params[:id])
          if @branch 
            render json: @branch
          else
            render json: {error: "Unavailable"}
          end
-       end
+      end
     
-       def create
+      def create
          @branch = Branch.new(data_params)
          if @branch.save
            render json: @branch
          else
            render json: { error: @branch.errors.full_messages}
          end
-       end
+      end
    
-       def data_params
-           params.require(:branch).permit(:branch_name)
-       end
+      def data_params
+          params.require(:branch).permit(:branch_name)
+      end
    
-       def update
+      def update
           @branch = Branch.find(params[:id])
           if @branch
            @branch.update(data_params)
@@ -35,9 +35,9 @@ class BranchController < ApplicationController
           else
            render json: {error: "Unable to update user"}
           end
-       end
+      end
    
-       def destroy
+      def destroy
           @branch = Branch.find(params[:id])
           if @branch
            @branch.destroy()
@@ -45,5 +45,5 @@ class BranchController < ApplicationController
           else
            render json: {error: "unable to delete data"}
           end
-       end
+      end
 end
